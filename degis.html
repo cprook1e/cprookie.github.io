@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hesap Değiştirme</title>
+<style>
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(img/spo.jpg); /* Burada 'arka_plan_gorseli.jpg' yerine kendi görselinizin yolunu belirtin */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+        color: #333;
+        text-align: center;
+    }
+    .account-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+    .account-list li {
+        margin-bottom: 10px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .account-list li:hover {
+        background-color: #e0e0e0;
+    }
+    .account-list li img {
+        width: 70px; /* Profil fotoğrafını büyütmek için genişliği artırın */
+        height: 70px; /* Profil fotoğrafını büyütmek için yüksekliği artırın */
+        border-radius: 50%;
+        margin-right: 10px;
+        object-fit: cover; /* Fotoğrafı kesmeden sığdırmak için */
+    }
+    .account-list li h3 {
+        margin: 0;
+    }
+    .account-list li p {
+        margin: 0;
+        color: #666;
+    }
+    .account-list li button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .account-list li button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Hesap Değiştir</h1>
+    <ul class="account-list">
+        <li>
+            <img src="img/ömer.JPG" alt="Kullanıcı 1">
+            <div>
+                <h3>cprookie</h3>
+                <p>cprookie2@gmail.com</p>
+            </div>
+            <button onclick="switchAccount('hesap1')">Geçiş Yap</button>
+        </li>
+        <li>
+            <img src="img/ömer.JPG" alt="Kullanıcı 2">
+            <div>
+                <h3>Ömer</h3>
+                <p>ozd.omer171@gmail.com</p>
+            </div>
+            <button onclick="switchAccount('hesap2')">Geçiş Yap</button>
+        </li>
+        <!-- Diğer hesapları buraya ekle -->
+    </ul>
+</div>
+<script>
+    function switchAccount(accountId) {
+        // Burada hesap değiştirme işlemi gerçekleştirilebilir
+        console.log("Hesap değiştirme işlemi gerçekleştirildi. Hesap ID: " + accountId);
+        // İşlem tamamlandıktan sonra kullanıcıyı yeni hesaba yönlendirebilirsiniz.
+    }
+</script>
+</body>
+</html>

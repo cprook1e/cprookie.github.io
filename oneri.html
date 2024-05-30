@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Film İstek Kutusu</title>
+<style>
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(img/spo.jpg); /* Burada 'arka_plan_gorseli.jpg' yerine kendi görselinizin yolunu belirtin */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+        color: #333;
+    }
+    .request-form {
+        margin-top: 20px;
+    }
+    .request-form label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .request-form textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+    .request-form button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .request-form button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Film İstek Kutusu</h1>
+    <p>Bulamadığınız bir film mi var? Lütfen bize aşağıdaki form aracılığıyla bildirin, size yardımcı olmaktan mutluluk duyarız.</p>
+    <!-- Film istek formu -->
+    <form id="requestForm" class="request-form">
+        <label for="filmName">Film Adı:</label>
+        <input type="text" id="filmName" name="filmName" required>
+        <label for="filmDescription">Film Hakkında Bilgi:</label>
+        <textarea id="filmDescription" name="filmDescription" rows="4" required></textarea>
+        <button type="submit">İstek Gönder</button>
+    </form>
+</div>
+<script>
+    document.getElementById("requestForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        var filmName = document.getElementById("filmName").value;
+        var filmDescription = document.getElementById("filmDescription").value;
+
+        // Burada film isteğini göndermek için bir işlem yapabilirsiniz, örneğin bir API'ye istek göndererek.
+
+        // Örnek:
+        fetch("film_istek_api_url", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                filmName: filmName,
+                filmDescription: filmDescription
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            alert("Film isteğiniz başarıyla gönderildi.");
+            // İstek gönderildikten sonra teşekkür mesajı veya başka bir işlem yapabilirsiniz.
+        })
+        .catch(error => {
+            console.error("Hata:", error);
+            alert("İsteğiniz Göderildi.");
+        });
+
+        // Bu sadece bir örnektir, gerçek uygulamada kullanılacak API'ye ve işlemlere uygun olarak düzenlenmelidir.
+    });
+</script>
+
+</body>
+</html>

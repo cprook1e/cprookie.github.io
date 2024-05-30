@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topluluk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url(img/spo.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            object-fit: cover;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7); /* Arkaplanın görünürlüğünü düzenlemek için rgba() kullanabilirsiniz */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #messages {
+            max-height: 400px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        #messages p {
+            margin: 5px 0;
+        }
+
+        #input-message {
+            width: calc(100% - 20px); /* Ekledim: Kenar boşluklarını da hesaba katarak genişlik belirlendi */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        #send-button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #send-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Topluluk Sohbeti</h1>
+        <div id="messages">
+            <p><strong>Kullanıcı1:</strong> Merhaba!</p>
+            <p><strong>Kullanıcı2:</strong> Selam, nasılsın?</p>
+            <!-- Buraya daha önceki mesajlar eklenebilir -->
+        </div>
+        <textarea id="input-message" placeholder="Mesajınızı buraya yazın..."></textarea>
+        <button id="send-button">Gönder</button>
+    </div>
+
+    <script>
+        document.getElementById("send-button").addEventListener("click", sendMessage);
+
+        document.getElementById("input-message").addEventListener("keydown", function(event) {
+            if (event.key === "Enter" && !event.shiftKey) {
+                sendMessage();
+                event.preventDefault(); // Enter tuşunun varsayılan davranışını engelle
+            }
+        });
+
+        function sendMessage() {
+            var messageInput = document.getElementById("input-message");
+            var message = messageInput.value.trim();
+            
+            if (message !== "") {
+                var messagesContainer = document.getElementById("messages");
+                var newMessage = document.createElement("p");
+                newMessage.innerHTML = "<strong>Siz:</strong> " + message;
+                messagesContainer.appendChild(newMessage);
+                messageInput.value = "";
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>

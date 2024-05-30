@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPIDERMAN</title>
+
+    <link rel="shortcut icon" href="img/film-movie-reel-icon.webp" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+
+        /*! base css start */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Electrolize", sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+        }
+
+        .navbar {
+            background-color: black;
+            height: 60px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            padding: 0 50px;
+        }
+
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 0;
+            list-style: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .submenu.active {
+            max-height: 1000px;
+            transition: max-height 0.3s ease-in;
+        }
+
+        .submenu li {
+            color: #333;
+            padding: 10px;
+        }
+
+        .submenu li i {
+            margin-right: 15px;
+
+
+        }
+
+        .sub-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            list-style: none;
+            padding-left: 10px;
+
+
+        }
+
+
+        .sub-submenu.active {
+            max-height: 1000px;
+            transition: max-height 0.3s ease-in;
+
+        }
+
+        .LOGO {
+            font-size: 40PX;
+            color: rgb(255, 70, 70);
+            cursor: pointer;
+            margin-top: -10px;
+        }
+
+        .LOGO {
+            font-weight: bolder;
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 30px;
+
+        }
+
+        .menu-list {
+            display: flex;
+            list-style: none;
+            column-gap: 50px;
+        }
+
+        .menu-list-item {
+            cursor: pointer;
+
+        }
+
+        .menu-list-item:hover {
+            font-weight: bolder;
+            transition: .5s;
+            font-weight: bold;
+        }
+
+
+        .menu-list-item.active {
+            font-weight: bold;
+        }
+
+        .profile-container {
+            display: flex;
+
+        }
+
+
+
+        .profile-container {
+            cursor: pointer;
+            align-items: center;
+            column-gap: 20px;
+            line-height: 1px;
+
+        }
+
+
+
+
+
+
+        .profile-foto {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 30px;
+        }
+
+        .toggle {
+            width: 40px;
+            height: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .toggle-icon {
+            color: goldenrod;
+        }
+
+        .toggle-ball {
+            width: 18px;
+            height: 18px;
+            background-color: black;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            right: 1px;
+            transition: .5s ease all;
+        }
+
+        /*! sidebar start */
+        .sidebar {
+            background-color: black;
+            color: white;
+            height: 100%;
+            width: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 60px;
+            row-gap: 40px;
+            position: fixed;
+            top: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar a {
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            color: cyan;
+            transform: scale(1.1);
+        }
+
+        .search-container {
+            display: none;
+            position: fixed;
+            top: 10%;
+            left: 50px;
+            padding: 5px;
+            /* Arama kutusu ve düğme arasındaki boşluğu azalt */
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            /* Köşeleri daha yuvarlak yap */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            background-color: transparent;
+            /* Arka planı kaldır */
+        }
+
+        .search-container input[type=text] {
+            width: 100px;
+            /* Arama kutusunun genişliğini ayarla */
+            padding: 5px;
+            /* Yazı boyutu */
+            margin: 0;
+            border: none;
+            /* Kenarlık yok */
+            border-radius: 15px 0 0 15px;
+            /* Köşeleri daha yuvarlak yap */
+            outline: none;
+            /* Odaklandığında kenarlık olmasın */
+            font-size: 14px;
+            /* Yazı boyutu */
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Hafif bir iç gölge */
+        }
+
+        .search-container button {
+            padding: 5px 10px;
+            /* Düğme boyutunu ayarla */
+            margin: 0;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 0 15px 15px 0;
+            /* Köşeleri daha yuvarlak yap */
+            cursor: pointer;
+            font-size: 14px;
+            /* Yazı boyutu */
+            transition: background-color 0.3s ease;
+            /* Düğme üzerine gelince arkaplan rengi değiştirme animasyonu */
+        }
+
+        .search-container button:hover {
+            background-color: #0056b3;
+            /* Düğme üzerine gelince arkaplan rengini değiştir */
+        }
+
+        /*! sidebar end */
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .film-container {
+            width: 70%;
+        }
+
+        .film-video {
+            margin-top: 20px;
+            margin-left: 150px;
+        }
+
+        .film-container video {
+            width: 800px;
+            height: 400px;
+            border-radius: 10px;
+        }
+
+        .film-header {
+            display: flex;
+            column-gap: 20px;
+        }
+
+        .film-header img {
+            width: 200px;
+            height: 300px;
+            border-radius: 10px;
+            margin-left: 50px;
+        }
+
+        .film-info {
+            margin-top: 20px;
+        }
+
+
+
+        .film-info h2 {
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .film-info p {
+            line-height: 1.5;
+        }
+
+        .film-info h2,
+        .film-info p,
+        .film-info h3 {
+            margin-bottom: 20px;
+            /* Altına 20 piksel boşluk ekler */
+        }
+
+        .with-space {
+            margin-right: 20px;
+            /* Sağ tarafa 10 piksel boşluk ekler */
+            color: #007bff;
+        }
+
+
+
+        .comments-section {
+            margin-top: 40px;
+            margin-left: 50px;
+        }
+
+        .comments-section h3 {
+            margin-bottom: 20px;
+        }
+
+        .comments-section textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 10px;
+            background-color: #2e2e2e;
+            color: #ffffff;
+        }
+
+        .comments-section button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comments-section button:hover {
+            background-color: #0056b3;
+        }
+
+        .categories {
+            width: 25%;
+            background-color: #2e2e2e;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .categories h3 {
+            margin-bottom: 20px;
+        }
+
+        .categories ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .categories ul li {
+            margin-bottom: 10px;
+        }
+
+        .categories ul li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .categories ul li a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 800px) {
+            .menu-container {
+                display: none;
+            }
+
+            .featured-title {
+                width: 200px;
+            }
+
+            .featured-content {
+                height: 40vh;
+            }
+
+            .featured-desc {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 5;
+                -webkit-box-orient: vertical;
+                max-width: 200px;
+                padding: 0;
+            }
+
+            .category,
+            .category-title {
+                font-size: 12px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .container {
+                width: 100%;
+                margin: 0;
+                padding: 10px;
+                border-radius: 0;
+            }
+
+            .navbar-wrapper {
+                padding: 0 20px;
+            }
+
+            .menu-list {
+                column-gap: 10px;
+            }
+
+            .sidebar {
+                width: 40px;
+                padding-top: 50px;
+            }
+
+            .sidebar a {
+                font-size: 18px;
+            }
+
+            .search-container {
+                top: 15%;
+                left: 40px;
+            }
+
+            .film-container {
+                width: 100%;
+            }
+
+            .film-header {
+                flex-direction: column;
+                align-items: center;
+
+            }
+
+            .film-header img {
+                width: 100px;
+                height: 150px;
+            }
+
+            .film-info {
+                margin-top: 10px;
+                text-align: center;
+            }
+
+
+            .film-info p {
+                color: #007bff;
+            }
+
+            .film-container video {
+                width: 100%;
+                height: auto;
+            }
+
+
+            .categories {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .comments-section textarea {
+                width: 100%;
+            }
+        }
+
+        .body.active {
+            background-color: white;
+        }
+
+        .container.active {
+            background-color: white;
+        }
+
+        .navbar.active {
+            background-color: white;
+            color: black;
+        }
+
+        .sidebar.active {
+            background-color: white;
+        }
+
+        .sidebar a.active {
+            color: black;
+            transition: transform 0.9s ease;
+        }
+
+        .sidebar a:hover.active {
+            color: cyan;
+            transform: scale(1.1);
+        }
+
+
+
+        .toggle.active {
+            background-color: black;
+        }
+
+        .toggle-ball.active {
+            background-color: white;
+            transform: translateX(-20px);
+        }
+
+        .film-info p.active {
+            color: black;
+        }
+
+        .categories.active {
+            color: black;
+            background-color: rgb(236, 236, 235);
+        }
+
+
+        .comments-section textarea.active {
+            background-color: rgb(236, 236, 235);
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-wrapper">
+            <div class="LOGO-wrapper">
+                <h1 class="LOGO">CpRookie</h1>
+            </div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item Active">Home page</li>
+                    <li class="menu-list-item">Movies</li>
+                    <li class="menu-list-item">Series</li>
+                    <li class="menu-list-item">Populer</li>
+                    <li class="menu-list-item">My List</li>
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-foto" src="img/ömer.JPG" alt="">
+                <div class="profie-text-container">
+                    <span class="profile-text">My account</span>
+                    <i class="bi bi-caret-down-fill" onclick="toggleMenu(event)"></i>
+                    <ul class="submenu" id="submenu">
+                        <li style="color: black; margin-bottom: 10px; display: flex; align-items: center;"
+                            onclick="goToPage('profile.html')">
+                            <i class="fas fa-user" style="margin-right: 5px;"></i> Profil
+                        </li>
+                        <li style="color: black; margin-bottom: 10px; display: flex; align-items: center;"
+                            onclick="goToPage('accountChange.html')">
+                            <i class="fas fa-user-cog" style="margin-right: 5px;"></i> Switch Account
+                        </li>
+                        <li style="color: black; margin-bottom: 10px; display: flex; align-items: center;"
+                            onclick="goToPage('recommend.html')">
+                            <i class="fas fa-film" style="margin-right: 5px;"></i> Recommend Movie
+                        </li>
+                        <li style="color: black; margin-bottom: 10px; display: flex; align-items: center;"
+                            onclick="goToPage('changePassword.html')">
+                            <i class="fas fa-lock" style="margin-right: 5px;"></i> Change password
+                        </li>
+                        <li style="color: black; margin-bottom: 10px;">
+                            <i class="fas fa-language" style="margin-right: 5px;"></i> Language: English
+                            <img src="img/turkey.png" alt=""
+                                style="width: 20px; height: 20px; margin-right: 5px; margin-top: 5px;">
+                            <ul class="sub-submenu" style="padding-left: 0; text-align: left;">
+                                <li style="color: black; margin-bottom: 5px; padding-left: 15px;"
+                                    onclick="goToPage('languageEnglish.html')">
+                                    <img src="img/english.png" alt=""
+                                        style="width: 20px; height: 20px; margin-right: 5px;">
+                                    <span>İngilizce</span>
+                                </li>
+                                <li style="color: black; margin-bottom: 5px; padding-left: 15px;"
+                                    onclick="goToPage('eng.html')">
+                                    <img src="img/french.png" alt=""
+                                        style="width: 20px; height: 20px; margin-right: 5px;">
+                                    <span>Fransızca</span>
+                                </li>
+                                <li style="color: black; margin-bottom: 5px; padding-left: 15px;"
+                                    onclick="goToPage('languageGerman.html')">
+                                    <img src="img/german.png" alt=""
+                                        style="width: 20px; height: 20px; margin-right: 5px;">
+                                    <span>Almanca</span>
+                                </li>
+                                <li style="color: black; margin-bottom: 5px; padding-left: 15px;"
+                                    onclick="goToPage('languageKurdish.html')">
+                                    <img src="img/kurdish.png" alt=""
+                                        style="width: 20px; height: 20px; margin-right: 5px;">
+                                    <span>Kürtçe</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li style="color: black;" onclick="goToPage('help.html')">
+                            <i class="fas fa-question-circle"></i> Yardım
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="toggle">
+                    <i class="bi bi-moon-fill toggle-icon"></i>
+                    <i class="bi bi-brightness-high-fill toggle-icon"></i>
+                    <div class="toggle-ball"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <a href="#" class="bi bi-search" id="search-icon"></a>
+        <div class="search-container" id="search-container">
+            <input type="text" placeholder="ara..." id="search-input">
+            <button id="search-button">ara</button>
+        </div>
+        <a href="#" class="bi bi-house-door-fill" onclick="goToPage('ev.html')"></a>
+        <a href="#" class="bi bi-people-fill" onclick="goToPage('kullanıcılar.html')"></a>
+        <a href="#" class="bi bi-bookmarks-fill" onclick="goToPage('kaydet.html')"></a>
+        <a href="#" class="bi bi-hourglass-top" onclick="goToPage('geçmiş.html')"></a>
+        <a href="#" class="bi bi-chat-fill" onclick="goToPage('topluluk.html')"></a>
+        <a href="#" class="bi bi-gear-fill" onclick="goToPage('ayarlar.html')"></a>
+    </div>
+
+    </div>
+    <div id="film-listesi" style="display: none;">
+        <div class="film" onclick="goToFilm('macera.html')">macera</div>
+        <div class="film" onclick="goToFilm('film2.html')">Film 2</div>
+        <div class="film" onclick="goToFilm('film3.html')">Film 3</div>
+        <!-- Film listesi buraya eklenecek -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchIcon = document.getElementById('search-icon');
+            const searchContainer = document.getElementById('search-container');
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+            const filmListesi = document.getElementById('film-listesi');
+
+            searchIcon.addEventListener('click', function (event) {
+                event.stopPropagation();
+                searchContainer.style.display = 'block';
+                searchInput.focus();
+            });
+
+            searchButton.addEventListener('click', function (event) {
+                event.stopPropagation();
+                searchFilms();
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!searchContainer.contains(event.target) && event.target !== searchIcon) {
+                    searchContainer.style.display = 'none';
+                }
+            });
+
+            searchInput.addEventListener('keydown', function (event) {
+                if (event.keyCode === 13) {
+                    searchFilms();
+                }
+            });
+
+            function searchFilms() {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                const films = filmListesi.getElementsByClassName('film');
+
+                for (let i = 0; i < films.length; i++) {
+                    const film = films[i];
+                    const title = film.textContent.toLowerCase();
+                    if (title.includes(searchTerm)) {
+                        film.style.display = 'block';
+                    } else {
+                        film.style.display = 'none';
+                    }
+                }
+            }
+        });
+
+        function goToFilm(filmUrl) {
+            window.location.href = filmUrl;
+        }
+    </script>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- Film Bilgileri -->
+            <div class="film-container">
+                <!-- Film Afişi ve Başlığı -->
+
+                <!-- Video -->
+                <div class="film-video">
+                    <video src="img/spiderman.mp4" width="800" height="400" controls></video>
+                </div>
+                <div class="film-header">
+                    <img src="img/f1.jpg" alt="Film Afişi">
+                    <div class="film-info">
+                        <h2>Spiderman</h2>
+                        <p>
+                            Sıradan bir lise öğrencisi olan Peter Parker'ın
+                            hayatı bir gün bir örümcek tarafından ısırılmasıyla
+                            tamamen değişir. Çünkü bu örümcek sıradan bir örümcek
+                            değildir, genetik olarak özelikle geliştirilmiş, bilimsel
+                            amaçlarla kullanılan bir denektir. Öte yandan olan olmuştur
+                            ve Parker'da tuhaf değişiklikler başgöstermektedir.
+                        </p>
+                        <div class="movie-details">
+                            <p><strong class="with-space">İmdb</strong>: 7.4</p>
+                            <p><strong class="with-space">Type</strong>: Fantasy, Action</p>
+                            <p><strong class="with-space">Production</strong>: 2002</p>
+                            <p><strong class="with-space">Director</strong>: Sami RAİMİ</p>
+                            <p><strong class="with-space">Players</strong>: Tobey Maguire, Willem Dafoe, Kirsten
+                                Dunst, James Franco, Cliff Robertson, Rosemary Harris, J.K. Simmons, Joe Manganiello,
+                                Bill Nunn, Michael Papajohn</p>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Yorumlar -->
+                <div class="comments-section">
+                    <h3>Yorumlar</h3>
+                    <textarea rows="4" placeholder="Write your comment here..."></textarea>
+                    <button>Submit Comment</button>
+                </div>
+            </div>
+            <!-- Film Kategorileri -->
+            <div class="categories">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Comedy</a></li>
+                    <li><a href="#">Drama</a></li>
+                    <li><a href="#">Science Fiction</a></li>
+                    <li><a href="#">Horror</a></li>
+                    <li><a href="#">Romantic</a></li>
+                    <li><a href="#">Documentary</a></li>
+                    <li><a href="#">Animation</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

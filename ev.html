@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url(img/spo.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7); /* Arkaplanın görünürlüğünü düzenlemek için rgba() kullanabilirsiniz */
+            border-radius: 8px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .content {
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+        /*! responsive start */
+@media only screen and (max-width:800px){
+    .menu-container{
+        display: none;
+    }
+    .featured-title{
+        width: 200px;
+    }
+    .featured-content{
+        height: 40vh;
+    }
+    .featured-desc{
+        overflow: hidden;
+        display: -webkit-box ;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        max-width: 200px;
+        padding: 0;
+    }
+
+}
+/*! responsive end */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hoş Geldiniz!</h1>
+        <div class="content">
+            <p>
+                Film Sitemize hoş geldiniz! Burada en yeni filmleri bulabilir ve izleyebilirsiniz. Ayrıca, film önerileri ve güncel haberler hakkında bilgi alabilirsiniz. İyi seyirler!
+            </p>
+        </div>
+        <div class="button-container">
+            <a href="index.html" class="button">Ana Sayfa</a>
+        </div>
+    </div>
+</body>
+</html>

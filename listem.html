@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Listem</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="listScript.js" defer></script>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-image: url(img/f.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            object-fit: cover;
+
+        }
+
+        .movie-list-container {
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+
+
+        }
+
+        .movie-list-title {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .movie-list-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .movie-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 200px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px
+        }
+
+        .movie-item-img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            /* Yeni boyutlar */
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+
+        .movie-item-info {
+            text-align: center;
+        }
+
+        .movie-item-title {
+            font-size: 18px;
+            font-weight: bold;
+
+        }
+
+        .movie-item-buttons {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        .like-icon {
+            cursor: pointer;
+        }
+
+        .list-container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .list-container h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="list-container">
+        <h1>Filmlerim</h1>
+        <div class="movie-list-wrapper" id="saved-movie-list">
+            <!-- Filmler burada JavaScript ile dinamik olarak eklenecek -->
+        </div>
+    </div>
+</body>
+
+</html>

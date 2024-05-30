@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Şifre Değiştirme</title>
+<style>
+    body {
+        background-image: url('img/spiderman.jpg'); /* Arka plan resmini ekleyin */
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        height: 100vh;
+        display: flex; /* Flexbox kullanarak içeriği merkeze alın */
+        justify-content: center; /* Yatayda merkezleme */
+        align-items: center; /* Dikeyde merkezleme */
+        width: 100%;
+        background-image: linear-gradient(rgba(0,0,0,0.0),rgba(0,0,0.0)),url(spo.jpg);
+        background-position: center;
+        background-size: cover;
+        color: white; /* Yazı rengini beyaz yap */
+    }
+    h2 {
+        margin-bottom: 20px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 0 auto; /* Değiştir butonunu ortala */
+    }
+    .btn:hover {
+        background-color: #45a049;
+    }
+    .notification {
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin-top: 20px;
+        display: none; /* Başlangıçta gizle */
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    
+    <div>
+        <h2>Şifre Değiştirme</h2>
+        <form id="accountForm">
+            <div class="form-group">
+                <label for="currentPassword">Mevcut Şifre:</label>
+                <input type="password" id="currentPassword" name="currentPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">Yeni Şifre:</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Yeni Şifre (Tekrar):</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <button type="submit" class="btn">Değiştir</button>
+        </form>
+        <div id="notification" class="notification">Şifreniz başarıyla değiştirildi!</div>
+    </div>
+</div>
+<script>
+    document.getElementById("accountForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        var currentPassword = document.getElementById("currentPassword").value;
+        var newPassword = document.getElementById("newPassword").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (newPassword !== confirmPassword) {
+            alert("Yeni şifreler eşleşmiyor.");
+            return;
+        }
+
+        // Burada hesap değiştirme işlemini gerçekleştirebilirsiniz, örneğin bir API'ye istek göndererek.
+
+        // Örnek: 
+        // fetch("hesap_degistirme_api_url", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify({
+        //         currentPassword: currentPassword,
+        //         newPassword: newPassword
+        //     })
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log(data);
+        //     alert("Şifre başarıyla değiştirildi.");
+        //     document.getElementById("notification").style.display = "block"; // Bildirimi göster
+        // })
+        // .catch(error => {
+        //     console.error("Hata:", error);
+        //     alert("Bir hata oluştu, lütfen tekrar deneyin.");
+        // });
+
+        // Bu sadece bir örnektir, gerçek uygulamada kullanılacak API'ye ve işlemlere uygun olarak düzenlenmelidir.
+
+        // Bildirimi göster
+        document.getElementById("notification").style.display = "block";
+    });
+</script>
+</body>
+</html>

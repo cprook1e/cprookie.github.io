@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Profili</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(img/spo.jpg); /* Arka plan görselinin yolunu belirtin */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .profile-info {
+            flex-grow: 1;
+        }
+
+        .profile-info h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container.show {
+            display: block;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container .button {
+            width: auto;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container .button:hover {
+            background-color: #0056b3;
+        }
+
+        .film-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .film-list li {
+            margin-bottom: 5px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kullanıcı Profili</h1>
+        <div class="profile">
+            <img class="profile-img" src="img/ömer.JPG" alt="Profil Resmi">
+            <div class="profile-info">
+                <h2>Ömer ÖZDEMİR</h2>
+                <p>Email: <span id="email">ozd.omer171@gmail.com</span></p>
+                <p>Üyelik Tarihi: <span id="uyelik-tarihi">21/03/2024</span></p>
+                <p>Doğum Tarihi: <span id="dogum-tarihi">30/03/2000</span></p>
+                <a href="#" class="button" onclick="showEditForm()">Profili Düzenle</a>
+            </div>
+        </div>
+        <div class="form-container" id="edit-form">
+            <h2>Profil Düzenle</h2>
+            <form>
+                <label for="edit-email">Email:</label>
+                <input type="email" id="edit-email" name="edit-email" value="ozd.omer171@gmail.com">
+
+                <label for="edit-uyelik-tarihi">Üyelik Tarihi:</label>
+                <input type="text" id="edit-uyelik-tarihi" name="edit-uyelik-tarihi" value="21/03/2024">
+
+                <label for="edit-dogum-tarihi">Doğum Tarihi:</label>
+                <input type="text" id="edit-dogum-tarihi" name="edit-dogum-tarihi" value="30/03/2000">
+
+                <button type="button" class="button" onclick="saveChanges()">Kaydet</button>
+            </form>
+        </div>
+        <div class="section">
+            <h2>İzlediğim Filmler</h2>
+            <ul class="film-list">
+                <li>Interstellar</li>
+                <li>The Shawshank Redemption</li>
+                <li>Inception</li>
+                <li>Memento</li>
+                <li>Allied</li>
+                <li>Blood Daimond</li>
+                <li>Forrest Gump</li>
+                <li>Inglourious Basterds</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Favori Filmlerim</h2>
+            <ul class="film-list">
+                <li>The Godfather</li>
+                <li>The Dark Knight</li>
+                <li>Pulp Fiction</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function showEditForm() {
+            var editForm = document.getElementById("edit-form");
+            editForm.classList.toggle("show");
+        }
+
+        function saveChanges() {
+            var newEmail = document.getElementById("edit-email").value;
+            var newUyelikTarihi = document.getElementById("edit-uyelik-tarihi").value;
+            var newDogumTarihi = document.getElementById("edit-dogum-tarihi").value;
+
+            document.getElementById("email").innerText = newEmail;
+            document.getElementById("uyelik-tarihi").innerText = newUyelikTarihi;
+            document.getElementById("dogum-tarihi").innerText = newDogumTarihi;
+
+            // Profil düzenleme formunu gizle
+            document.getElementById("edit-form").classList.remove("show");
+        }
+    </script>
+</body>
+</html>

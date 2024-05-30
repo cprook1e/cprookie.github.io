@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayarlar</title>
+    <link rel="stylesheet" href="">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(img/hobb.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f4f4f4;
+            object-fit: cover;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7); /* Arkaplanın görünürlüğünü düzenlemek için rgba() kullanabilirsiniz */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            padding: 10px;
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 5px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            margin-top: 5px;
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ayarlar</h1>
+        <form action="#">
+            <fieldset>
+                <legend>Dil Seçimi</legend>
+                <input type="checkbox" id="turkish" name="language" value="turkish">
+                <label for="turkish">Türkçe</label><br>
+                <input type="checkbox" id="english" name="language" value="english">
+                <label for="english">İngilizce</label><br>
+                <input type="checkbox" id="other" name="language" value="other">
+                <label for="other">Diğer</label>
+                <input type="text" id="otherLanguage" name="otherLanguage" placeholder="Lütfen belirtin">
+            </fieldset>
+
+            <fieldset>
+                <legend>Görüntü Kalitesi</legend>
+                <input type="radio" id="hd" name="quality" value="hd">
+                <label for="hd">HD (Yüksek Çözünürlük)</label><br>
+                <input type="radio" id="standard" name="quality" value="standard">
+                <label for="standard">Standart (Daha Hızlı Yükleme)</label><br>
+                <input type="radio" id="auto" name="quality" value="auto">
+                <label for="auto">Otomatik</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Oturum Açma Ayarları</legend>
+                <input type="checkbox" id="autoLogin" name="autoLogin">
+                <label for="autoLogin">Otamatik Oturum Aç</label><br>
+                <input type="checkbox" id="keepSession" name="keepSession">
+                <label for="keepSession">Oturumu Açık Tut</label><br>
+                <input type="checkbox" id="logout" name="logout">
+                <label for="logout">Oturumu Kapat</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Bildirim Ayarları</legend>
+                <input type="checkbox" id="newMovie" name="newMovie">
+                <label for="newMovie">Yeni Film Eklendiğinde Bildirim Al</label><br>
+                <input type="checkbox" id="recommendedMovies" name="recommendedMovies">
+                <label for="recommendedMovies">Önerilen Filmler Hakkında Bildirim Al</label><br>
+                <input type="checkbox" id="discounts" name="discounts">
+                <label for="discounts">İndirimlerden Haberdar Olmak İçin Bildirim Al</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Hesap Ayarları</legend>
+                <button type="button" id="changePassword">Şifre Değiştir</button><br>
+                <button type="button" id="changeEmail">E-posta Değiştir</button><br>
+                <button type="button" id="deleteAccount">Hesabı Sil</button>
+            </fieldset>
+
+            <fieldset>
+                <legend>Diğer</legend>
+                <a href="#">Gizlilik Politikası</a><br>
+                <a href="#">Hakkımızda</a><br>
+                <a href="#">Yardım ve Destek</a>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

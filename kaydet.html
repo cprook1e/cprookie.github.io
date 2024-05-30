@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaydedilen Filmler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(img/spo.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7); /* Arkaplanın görünürlüğünü düzenlemek için rgba() kullanabilirsiniz */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .film-listesi {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .film-listesi li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            
+        }
+
+        .film-listesi li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .film-listesi li h2 {
+            margin-top: 0;
+            
+        }
+
+        .film-listesi li p {
+            margin-bottom: 5px;
+        }
+
+        .film-listesi li img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kaydedilen Filmler</h1>
+        <ul class="film-listesi">
+            <li>
+                <img src="img/f.jpg" alt="film 1">
+                <h2>HOBBİT</h2>
+                <p>Yönetmen: Yönetmen Adı</p>
+                <p>Yıl: 2022</p>
+                <p>Tür: Aksiyon</p>
+            </li>
+            <li>
+                <img src="img/f4.jpg" alt="Film 2">
+                <h2>DAREDEVIL</h2>
+                <p>Yönetmen: Başka Bir Yönetmen</p>
+                <p>Yıl: 2020</p>
+                <p>Tür: Komedi</p>
+            </li>
+            <!-- Buraya başka filmler eklenebilir -->
+        </ul>
+    </div>
+</body>
+</html>

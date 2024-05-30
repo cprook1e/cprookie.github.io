@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmler</title>
+    <link rel="stylesheet" href="">
+    <style>
+        /* Genel stil ayarları */
+/* Genel stil ayarları */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2c947c;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+   
+}
+
+.wrapper {
+    flex: 1;
+}
+
+header {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.film-listesi {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.film {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 1rem;
+    width: 200px;
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+
+.film:hover {
+    transform: scale(1.05);
+}
+
+.film img {
+    width: 100%;
+    height: auto;
+    
+}
+
+
+.film h2 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.film p {
+    font-size: 1rem;
+    padding: 0 1rem;
+    flex: 1;
+}
+
+.detay-btn {
+    display: inline-block;
+    margin-top: auto; /* Butonu en alta sabitlemek için */
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.detay-btn:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    width: 100%;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>FİLMLER</h1>
+            <nav>
+                
+            </nav>
+        </header>
+        
+        <main>
+            <section class="film-listesi">
+                <article class="film">
+                    <img src="https://m.media-amazon.com/images/I/61T3umiIfEL._AC_UF1000,1000_QL80_.jpg" alt="Inception Poster">
+                    <h2>Inception</h2>
+                    <p>Film açıklaması buraya gelecek. Film hakkında kısa bir bilgi verin.</p>
+                    <a href="#" class="detay-btn">Detaylar</a>
+                </article>
+                <article class="film">
+                    <img src="https://image.tmdb.org/t/p/w200/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg" alt="The Shawshank Redemption Poster">
+                    <h2>The Shawshank Redemption</h2>
+                    <p>Film açıklaması buraya gelecek. Film hakkında kısa bir bilgi verin.</p>
+                    <a href="#" class="detay-btn">Detaylar</a>
+                </article>
+                <article class="film">
+                    <img src="https://image.tmdb.org/t/p/w200/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="The Godfather Poster">
+                    <h2>The Godfather</h2>
+                    <p>Film açıklaması buraya gelecek. Film hakkında kısa bir bilgi verin.</p>
+                    <a href="#" class="detay-btn">Detaylar</a>
+                </article>
+                <article class="film">
+                    <img src="https://w0.peakpx.com/wallpaper/611/61/HD-wallpaper-dark-knight-batman-batman-dark-knight-dark-knight.jpg" alt="The Dark Knight Poster">
+                    <h2>The Dark Knight</h2>
+                    <p>Film açıklaması buraya gelecek. Film hakkında kısa bir bilgi verin.</p>
+                    <a href="#" class="detay-btn">Detaylar</a>
+                </article>
+                <article class="film">
+                    <img src="https://www.miramax.com/assets/Pulp-Fiction1.png" alt="Pulp Fiction Poster">
+                    <h2>Pulp Fiction</h2>
+                    <p>Film açıklaması buraya gelecek. Film hakkında kısa bir bilgi verin.</p>
+                    <a href="#" class="detay-btn">Detaylar</a>
+                </article>
+                <article class="film">
+                    <img src="https://m.media-amazon.com/images/I/51VNG7R87NL._SY445_.jpg" alt="Fight Club Poster">
+                    <h2>Fight Club</h2>
+                    <p>Film açıklaması buraya gelecek. Film hakkında kısa bir bilgi verin.</p>
+                    <a href="#" class="detay-btn">Detaylar</a>
+                </article>
+                <article class="film">
+                    <img src="https://i.ebayimg.com/images/g/0q8AAOSwRrthNFT5/s-l1200.webp" alt="Forrest Gump Poster">
+                    <h2>Forrest Gump</h2>
+                    <p>Film açıklaması buraya gelecek. Film hakkında kısa bir bilgi verin.</p>
+                    <a href="#" class="detay-btn">Detaylar</a>
+                </article>
+                <article class="film">
+                    <img src="https://hdfilmcehennemi.cx/wp-content/uploads/2022/03/matrix.jpg" alt="The Matrix Poster">
+                    <h2>The Matrix</h2>
+                    <p>Film açıklaması buraya gelecek. Film hakkında kısa bir bilgi verin.</p>
+                    <a href="#" class="detay-btn">Detaylar</a>
+                </article>
+                <article class="film">
+                    <img src="https://images.justwatch.com/poster/8716732/s718/mad-max-fury-road.jpg" alt="The Matrix Poster">
+                    <h2>Mad Max</h2>
+                    <p>Film açıklaması buraya gelecek. Film hakkında kısa bir bilgi verin.</p>
+                    <a href="#" class="detay-btn">Detaylar</a>
+                </article>
+                <article class="film">
+                    <img src="https://images.justwatch.com/poster/266428517/s718/sessiz-bir-yer.jpg" alt="The Matrix Poster">
+                    <h2>A Quiet A Place</h2>
+                    <p>Film açıklaması buraya gelecek. Film hakkında kısa bir bilgi verin.</p>
+                    <a href="#" class="detay-btn">Detaylar</a>
+                </article>
+                <article class="film">
+                    <img src="https://musicart.xboxlive.com/7/55a13100-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080" alt="The Matrix Poster">
+                    <h2>The Nice Guys</h2>
+                    <p>Film açıklaması buraya gelecek. Film hakkında kısa bir bilgi verin.</p>
+                    <a href="#" class="detay-btn">Detaylar</a>
+                </article>
+                <article class="film">
+                    <img src="https://i.pinimg.com/736x/7a/bd/19/7abd1902c917dd68246d32e70a25cf2f.jpg" alt="The Matrix Poster">
+                    <h2>Extraction</h2>
+                    <p>Film açıklaması buraya gelecek. Film hakkında kısa bir bilgi verin.</p>
+                    <a href="#" class="detay-btn">Detaylar</a>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Film Sitem. Tüm hakları saklıdır.</p>
+    </footer>
+</body>
+</html>

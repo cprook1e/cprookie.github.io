@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İzlediğim Geçmiş Filmler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            background-image: url(img/f.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+    background-attachment: fixed;
+            object-fit: cover;
+
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: rgba(255, 255, 255, 0.7);
+            /* Arkaplanın görünürlüğünü düzenlemek için rgba() kullanabilirsiniz */
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        li:hover {
+            transform: scale(1.05);
+        }
+
+        .movie-poster {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .movie-title {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .movie-info {
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>İzlediğim Geçmiş Filmler</h1>
+        <ul>
+            <li>
+                <img src="https://m.media-amazon.com/images/I/61T3umiIfEL._AC_UF1000,1000_QL80_.jpg" alt="Inception"
+                    class="movie-poster">
+                <div class="movie-details">
+                    <div class="movie-title">Inception</div>
+                    <div class="movie-info">Yönetmen: Christopher Nolan | Yıl: 2010</div>
+                </div>
+            </li>
+            <li>
+                <img src="https://image.tmdb.org/t/p/w200/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"
+                    alt="The Shawshank Redemption" class="movie-poster">
+                <div class="movie-details">
+                    <div class="movie-title">The Shawshank Redemption</div>
+                    <div class="movie-info">Yönetmen: Frank Darabont | Yıl: 1994</div>
+                </div>
+            </li>
+            <li>
+                <img src="https://image.tmdb.org/t/p/w200/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="The Godfather"
+                    class="movie-poster">
+                <div class="movie-details">
+                    <div class="movie-title">The Godfather</div>
+                    <div class="movie-info">Yönetmen: Francis Ford Coppola | Yıl: 1972</div>
+                </div>
+            </li>
+            <li>
+                <img src="https://image.tmdb.org/t/p/w200/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="The Dark Knight"
+                    class="movie-poster">
+                <div class="movie-details">
+                    <div class="movie-title">The Dark Knight</div>
+                    <div class="movie-info">Yönetmen: Christopher Nolan | Yıl: 2008</div>
+                </div>
+            </li>
+            <li>
+                <img src="https://www.miramax.com/assets/Pulp-Fiction1.png" alt="Pulp Fiction" class="movie-poster">
+                <div class="movie-details">
+                    <div class="movie-title">Pulp Fiction</div>
+                    <div class="movie-info">Yönetmen: Quentin Tarantino | Yıl: 1994</div>
+                </div>
+            </li>
+            <!-- Daha fazla film ekleyebilirsiniz -->
+        </ul>
+    </div>
+</body>
+
+</html>

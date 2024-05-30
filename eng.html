@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FİLMKES1TLERİ</title>
+
+  <link rel="shortcut icon" href="img/film-movie-reel-icon.webp" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+  <!--! navbar start -->
+  <div class="navbar">
+    <div class="navbar-wrapper">
+      <div class="LOGO-wrapper">
+        <h1 class="LOGO">CpRookie</h1>
+      </div>
+      <div class="menu-container">
+        <ul class="menu-list">
+          <li class="menu-list-item Active">Ana Sayfa</li>
+          <li class="menu-list-item">Filmler</li>
+          <li class="menu-list-item">Diziler</li>
+          <li class="menu-list-item">Popüler</li>
+          <li class="menu-list-item">Listem</li>
+        </ul>
+      </div>
+      <div class="profile-container">
+        <img class="profile-foto" src="img/ömer.JPG" alt="">
+        <div class="profie-text-container">
+          <span class="profile-text">Hesabım</span>
+          <i class="bi bi-caret-down-fill" onclick="toggleMenu(event)"></i>
+          <ul class="submenu" id="submenu">
+            <li style="color: black; margin-bottom: 10px; display: flex; align-items: center;"
+              onclick="goToPage('profile.html')">
+              <i class="fas fa-user" style="margin-right: 5px;"></i> Profil
+            </li>
+            <li style="color: black; margin-bottom: 10px; display: flex; align-items: center;"
+              onclick="goToPage('degis.html')">
+              <i class="fas fa-user-cog" style="margin-right: 5px;"></i> Hesap Değiştir
+            </li>
+            <li style="color: black; margin-bottom: 10px; display: flex; align-items: center;"
+              onclick="goToPage('oneri.html')">
+              <i class="fas fa-film" style="margin-right: 5px;"></i> Film Öner
+            </li>
+            <li style="color: black; margin-bottom: 10px; display: flex; align-items: center;"
+              onclick="goToPage('sifre.html')">
+              <i class="fas fa-lock" style="margin-right: 5px;"></i> Şifre Değiştir
+            </li>
+            <li style="color: black; margin-bottom: 10px;">
+              <i class="fas fa-language" style="margin-right: 5px;"></i> Dil: Türkçe
+              <img src="img/turkey.png" alt="" style="width: 20px; height: 20px; margin-right: 5px; margin-top: 5px;">
+              <ul class="sub-submenu" style="padding-left: 0; text-align: left;">
+                <li style="color: black; margin-bottom: 5px; padding-left: 15px;"
+                  onclick="goToPage('eng.html')">
+                  <img src="img/english.png" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
+                  <span>İngilizce</span>
+                </li>
+                <li style="color: black; margin-bottom: 5px; padding-left: 15px;" onclick="goToPage('eng.html')">
+                  <img src="img/french.png" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
+                  <span>Fransızca</span>
+                </li>
+                <li style="color: black; margin-bottom: 5px; padding-left: 15px;"
+                  onclick="goToPage('languageGerman.html')">
+                  <img src="img/german.png" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
+                  <span>Almanca</span>
+                </li>
+                <li style="color: black; margin-bottom: 5px; padding-left: 15px;"
+                  onclick="goToPage('kurdi.html')">
+                  <img src="img/kurdish.png" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
+                  <span>Kürtçe</span>
+                </li>
+              </ul>
+            </li>
+            <li style="color: black;" onclick="goToPage('help.html')">
+              <i class="fas fa-question-circle"></i> Yardım
+            </li>
+          </ul>
+
+        </div>
+        <div class="toggle">
+          <i class="bi bi-moon-fill toggle-icon"></i>
+          <i class="bi bi-brightness-high-fill toggle-icon"></i>
+          <div class="toggle-ball"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--! navbar end -->
+
+  <!--! sidebar start -->
+  <div class="sidebar">
+    <a href="#" class="bi bi-search" id="search-icon"></a>
+    <div class="search-container" id="search-container">
+      <input type="text" placeholder="ara..." id="search-input">
+      <button id="search-button">ara</button>
+    </div>
+    <a href="#" class="bi bi-house-door-fill" onclick="goToPage('ev.html')"></a>
+    <a href="#" class="bi bi-people-fill" onclick="goToPage('kullanıcılar.html')"></a>
+    <a href="#" class="bi bi-bookmarks-fill" onclick="goToPage('kaydet.html')"></a>
+    <a href="#" class="bi bi-hourglass-top" onclick="goToPage('geçmiş.html')"></a>
+    <a href="#" class="bi bi-chat-fill" onclick="goToPage('topluluk.html')"></a>
+    <a href="#" class="bi bi-gear-fill" onclick="goToPage('ayarlar.html')"></a>
+  </div>
+
+  </div>
+  <div id="film-listesi" style="display: none;">
+    <div class="film" onclick="goToFilm('macera.html')">macera</div>
+    <div class="film" onclick="goToFilm('film2.html')">Film 2</div>
+    <div class="film" onclick="goToFilm('film3.html')">Film 3</div>
+    <!-- Film listesi buraya eklenecek -->
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchIcon = document.getElementById('search-icon');
+      const searchContainer = document.getElementById('search-container');
+      const searchInput = document.getElementById('search-input');
+      const searchButton = document.getElementById('search-button');
+      const filmListesi = document.getElementById('film-listesi');
+
+      searchIcon.addEventListener('click', function (event) {
+        event.stopPropagation();
+        searchContainer.style.display = 'block';
+        searchInput.focus();
+      });
+
+      searchButton.addEventListener('click', function (event) {
+        event.stopPropagation();
+        searchFilms();
+      });
+
+      document.addEventListener('click', function (event) {
+        if (!searchContainer.contains(event.target) && event.target !== searchIcon) {
+          searchContainer.style.display = 'none';
+        }
+      });
+
+      searchInput.addEventListener('keydown', function (event) {
+        if (event.keyCode === 13) {
+          searchFilms();
+        }
+      });
+
+      function searchFilms() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        const films = filmListesi.getElementsByClassName('film');
+
+        for (let i = 0; i < films.length; i++) {
+          const film = films[i];
+          const title = film.textContent.toLowerCase();
+          if (title.includes(searchTerm)) {
+            film.style.display = 'block';
+          } else {
+            film.style.display = 'none';
+          }
+        }
+      }
+    });
+
+    function goToFilm(filmUrl) {
+      window.location.href = filmUrl;
+    }
+  </script>
+
+
+  <div>
+    <div class="container">
+
+      <div class="content-wrapper">
+        <div class="featured-content">
+          <img class="featured-title" src="img/venom 2.png" alt="">
+          <p class="featured-desc"> Eddie Brock hırslı bir muhabirdir.
+            Sevgilisinin çalıştığı araştırma firmasının sahibi de peşinde
+            olduğu hikayelerden biridir. Kötü niyetli ve kendi amaçları
+            doğrultusunda hareket eden bu adamın hikayesinin peşinde koşarken,
+            Eddie, sadece simbiyoz hâlinde yaşayabilen ve adrenalinle beslenen
+            uzaylı bir organizmanın firma tarafından keşfedildiğini ve insan d
+            eneklerle birleştirilmeye çalışıldığını öğrenir.</p>
+          <div class="featured-buttons">
+            <button class="play-button" onclick="openVideo()">
+              <i class="bi bi-play-circle"></i>
+              Oynat
+            </button>
+            <button class="info-button">
+              <i class="bi bi-info-circle"></i>
+              Daha Fazla Bilgi
+            </button>
+          </div>
+
+          <div id="overlay" onclick="closeVideo()"></div>
+
+
+
+          <div id="video-container">
+            <video id="main-video" width="700" height="600" controls>
+              <source src="img/VENOM_ Zehirli Öfke 2 Türkçe Altyazılı Fragman.mp4" type="video/mp4">
+
+            </video>
+          </div>
+
+          <script>
+            function openVideo() {
+              var videoContainer = document.getElementById("video-container");
+              var overlay = document.getElementById("overlay");
+              videoContainer.style.display = "block";
+              overlay.style.display = "block";
+              document.getElementById("main-video").play();
+            }
+
+            function closeVideo() {
+              var videoContainer = document.getElementById("video-container");
+              var overlay = document.getElementById("overlay");
+              videoContainer.style.display = "none";
+              overlay.style.display = "none";
+              document.getElementById("main-video").pause();
+            }
+          </script>
+        </div>
+        <div class="movie-list-filter">
+          <select onchange="window.location.href=this.value;">
+            <option value="aksiyon.html">Aksiyon</option>
+            <option value="macera.html">Macera</option>
+            <option value="savas.html">Savaş</option>
+            <option value="gerilim.html">Gerilim</option>
+            <option value="korku.html">Korku</option>
+          </select>
+        </div>
+
+
+        <div class="movie-list-container">
+          <h1 class="movie-list-title">Popüler</h1>
+          <div class="movie-list-wrapper">
+            <ul class="movie-list">
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f1.jpg" alt="">
+                <div class="movie-item-info">
+                  <span class="movie-item-title">SPIDERMAN</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill" onclick="window.location.href='SPIDERMAN.html'"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f2.jpg" alt="">
+                <div class="movie-item-info">
+                  <span class="movie-item-title">HULK</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f3.jpg" alt="">
+                <div class="movie-item-info">
+                  <span class="movie-item-title">G.O.R.A</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f4.jpg" alt="">
+                <div class="movie-item-info">
+                  <span class="movie-item-title">DAREDEVIL</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f5.jpg" alt="">
+                <div class="movie-item-info">
+                  <span class="movie-item-title">HOBBİT</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f6.jpg" alt="">
+                <div class="movie-item-info">
+                  <span class="movie-item-title">A.R.O.G</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f7.jpg" alt="">
+                <div class="movie-item-info">
+                  <span class="movie-item-title">DARK</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <i class="bi bi-chevron-right arrow"></i>
+          </div>
+        </div>
+        <div class="movie-list-container">
+          <h1 class="movie-list-title">Gündemdekiler</h1>
+          <div class="movie-list-wrapper">
+            <ul class="movie-list">
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f6.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">A.R.O.G</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f7.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">DARK</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f5.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">HOBBIT</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f3.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">G.O.R.A</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f2.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">HULK</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f1.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">SPIDERMAN</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f4.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">DAREDEVIL</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <i class="bi bi-chevron-right arrow"></i>
+          </div>
+        </div>
+        <div class="movie-list-container">
+          <h1 class="movie-list-title">Yeni Çıkanlar</h1>
+          <div class="movie-list-wrapper">
+            <ul class="movie-list">
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f4.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">DAREDEVIL</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f1.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">SPIDERMAN</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f2.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">HULK</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f3.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">G.O.R.A</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f6.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">A.R.O.G</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f5.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">HOBBIT</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+              <li class="movie-item">
+                <img class="movie-item-img" src="img/f7.jpg" alt="" />
+                <div class="movie-item-info">
+                  <span class="movie-item-title">DARK</span>
+                  <div class="movie-item-buttons">
+                    <i class="bi bi-play-circle-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill like-icon" onclick="renkDegistir(this, 'up')"></i>
+                    <i class="bi bi-hand-thumbs-down-fill like-icon" onclick="renkDegistir(this, 'down')"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <i class="bi bi-chevron-right arrow"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!--! content end -->
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
